@@ -18,9 +18,9 @@ namespace CodeAlongMVC.Controllers
             return View(repo.GetAllBooks());
         }
 
-        public ActionResult Details(int aId)
+        public ActionResult Details(int id)
         {
-            return View(repo.GetBookByID(aId));
+            return View(repo.GetBookByID(id));
         }
 
         public BookController()
