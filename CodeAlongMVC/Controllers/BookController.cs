@@ -10,17 +10,17 @@ namespace CodeAlongMVC.Controllers
     
     public class BookController : Controller
     {
-        public BookRepository repo;
+        
 
         // GET: Book
         public ActionResult Index()
         {
-            return View(repo.GetAllBooks());
+            return View(BookRepository.Instance.GetAllBooks());
         }
 
         public ActionResult Details(int id)
         {
-            return View(repo.GetBookByID(id));
+            return View(BookRepository.Instance.GetBookByID(id));
         }
 
         [HttpGet]
@@ -31,13 +31,13 @@ namespace CodeAlongMVC.Controllers
         [HttpPost]
         public ActionResult Create(Book book)
         {
-            int Id =  repo.Add(book);
-            return View();
+            int Id =  BookRepository.Instance.Add(book);
+            return RedirectToAction("Index");
         }
 
         public BookController()
         {
-            repo = new BookRepository();
+
         }
 
         
