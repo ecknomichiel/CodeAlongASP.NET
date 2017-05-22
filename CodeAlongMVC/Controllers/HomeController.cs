@@ -26,5 +26,10 @@ namespace CodeAlongMVC.Controllers
 
             return View();
         }
+
+        public ActionResult Test()
+        {
+            return View();
+        }
     }
 }
