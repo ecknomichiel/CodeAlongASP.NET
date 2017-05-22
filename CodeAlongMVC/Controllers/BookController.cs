@@ -23,9 +23,23 @@ namespace CodeAlongMVC.Controllers
             return View(repo.GetBookByID(id));
         }
 
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(Book book)
+        {
+            int Id =  repo.Add(book);
+            return View();
+        }
+
         public BookController()
         {
             repo = new BookRepository();
         }
+
+        
     }
 }

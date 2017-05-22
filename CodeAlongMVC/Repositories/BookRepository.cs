@@ -9,6 +9,7 @@ namespace CodeAlongMVC
     public class BookRepository
     {
         private List<Book> context;
+        private int maxId;
 
         public IEnumerable<Book> GetAllBooks()
         {
@@ -29,6 +30,21 @@ namespace CodeAlongMVC
                 new Book(){ID = 3, Author = "Ian Mc Ewan", Description = "Novel", ISBN="113-1", Title = "The Innocent"},
                 new Book(){ID = 4, Author = "Michael Conelly", Description = "Novel", ISBN="114-1", Title = "The Poet"}
             };
+           maxId = context.Max(book => book.ID);
+        }
+
+        public int Add(Book book)
+        {
+            if (book.ID == 0)
+                book.ID = GetNextID();
+            context.Add(book);
+            return book.ID;
+
+        }
+
+        private int GetNextID()
+        {
+            return ++maxId;
         }
     }
 }
